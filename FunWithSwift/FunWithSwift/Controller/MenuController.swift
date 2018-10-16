@@ -26,14 +26,13 @@ class MenuController: UITableViewController {
 		MenuItem(image: #imageLiteral(resourceName: "profileIcon"), title: "Profile"),
 		MenuItem(image: #imageLiteral(resourceName: "profileIcon"), title: "Lists"),
 		MenuItem(image: #imageLiteral(resourceName: "profileIcon"), title: "Bookmarks"),
-		MenuItem(image: #imageLiteral(resourceName: "profileIcon"), title: "Moments"),
+		MenuItem(image: #imageLiteral(resourceName: "profileIcon"), title: "Moments")
 	]
 
 	let nonIconMenuItems = [
 		NonIconMenuItem(title: "Settings and privacy"),
 		NonIconMenuItem(title: "Help Center")
 	]
-
 
 	override func viewDidLoad() {
 		super.viewDidLoad()
@@ -85,18 +84,18 @@ extension MenuController {
 
 	override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 		if indexPath.row < menuItems.count {
-			let cell = tableView.dequeueReusableCell(withIdentifier: "menuItem", for: indexPath) as! MenuItemCell
+			let cell = MenuItemCell(style: .default, reuseIdentifier: "menuItem")
 			let menuItem = menuItems[indexPath.row]
 			cell.setupCell(image: menuItem.image, title: menuItem.title)
 			return cell
 		}
 
 		if indexPath.row == menuItems.count {
-			let cell = tableView.dequeueReusableCell(withIdentifier: "seperator", for: indexPath) as! SeperatorCell
+			let cell = SeperatorCell(style: .default, reuseIdentifier: "seperator")
 			return cell
 		}
 
-		let cell = tableView.dequeueReusableCell(withIdentifier: "nonIconItem", for: indexPath) as! NonIconMenuItemCell
+		let cell = NonIconMenuItemCell(style: .default, reuseIdentifier: "nonIconItem")
 		let menuItem = nonIconMenuItems[indexPath.row - (menuItems.count + 1)]
 		cell.setupCell(title: menuItem.title)
 		return cell

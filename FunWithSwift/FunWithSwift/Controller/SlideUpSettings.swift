@@ -116,7 +116,8 @@ class SlideUpSettings: UIViewController {
 	fileprivate func performAnimation(size: CGFloat) {
 		bottomAnchor.constant = size
 		menuHeightAnchor.constant = menuHeight
-		UIView.animate(withDuration: 0.4, delay: 0, usingSpringWithDamping: 0.9, initialSpringVelocity: 0.9, options: .curveEaseOut, animations: {
+		UIView.animate(withDuration: 0.4,
+					   delay: 0, usingSpringWithDamping: 0.9, initialSpringVelocity: 0.9, options: .curveEaseOut, animations: {
 			self.darkOverlayView.alpha = size == self.menuHeight ? 0 : 1
 			self.view.layoutIfNeeded()
 		}) { (_) in

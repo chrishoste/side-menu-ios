@@ -79,12 +79,14 @@ class MenuHeaderView: UIView {
 		usernameLabel.font = UIFont.systemFont(ofSize: 14, weight: .regular)
 		usernameLabel.textColor = .lightBlue
 
-		let attributedText = NSMutableAttributedString(string: "37 ", attributes: [.font: UIFont.systemFont(ofSize: 14, weight: .medium)])
+		let attributedText = NSMutableAttributedString(string: "37 ",
+													   attributes: [.font: UIFont.systemFont(ofSize: 14, weight: .medium)])
 		attributedText.append(NSAttributedString(string: "Following   ", attributes: [
 			.font: UIFont.systemFont(ofSize: 14, weight: .regular),
 			.foregroundColor: UIColor.lightBlue
 			]))
-		attributedText.append(NSAttributedString(string: "2 ", attributes: [.font: UIFont.systemFont(ofSize: 14, weight: .medium)]))
+		attributedText.append(NSAttributedString(string: "2 ",
+												 attributes: [.font: UIFont.systemFont(ofSize: 14, weight: .medium)]))
 		attributedText.append(NSAttributedString(string: "Followers", attributes: [
 			.font: UIFont.systemFont(ofSize: 14, weight: .regular),
 			.foregroundColor: UIColor.lightBlue

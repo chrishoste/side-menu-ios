@@ -42,11 +42,6 @@ class BaseSlideController: UIViewController {
 		setupGestures()
 	}
 
-	override func viewDidAppear(_ animated: Bool) {
-		super.viewDidAppear(animated)
-		
-	}
-
 	fileprivate func setupViews() {
 		view.addSubview(contentView)
 		view.addSubview(menuView)
@@ -151,7 +146,8 @@ class BaseSlideController: UIViewController {
 	fileprivate func performAnimation(_ value: CGFloat) {
 		trailingAnchor.constant = value
 
-		UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 1, initialSpringVelocity: 1, options: .curveEaseOut, animations: {
+		UIView.animate(withDuration: 0.5,
+					   delay: 0, usingSpringWithDamping: 1, initialSpringVelocity: 1, options: .curveEaseOut, animations: {
 			self.view.layoutIfNeeded()
 		}) { (_) in
 			return
