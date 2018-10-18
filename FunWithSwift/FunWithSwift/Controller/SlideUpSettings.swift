@@ -12,12 +12,16 @@ import UIKit
 class SlideUpSettings: UIViewController {
 
 	let menuHeight: CGFloat = 300
+
 	var bottomAnchor: NSLayoutConstraint!
 	var menuHeightAnchor: NSLayoutConstraint!
+	var stackView: UIStackView!
+	var upperStackView: UIStackView!
+	var panGesture: UIPanGestureRecognizer!
 
 	let menuView: UIView = {
 		let view = UIView()
-		view.backgroundColor = .blue
+		view.backgroundColor = .white
 		view.layer.cornerRadius = 15
 		return view
 	}()
@@ -38,6 +42,7 @@ class SlideUpSettings: UIViewController {
 
 		setupViews()
 		setupGestures()
+		addingSubViews()
 	}
 	override func viewDidAppear(_ animated: Bool) {
 		super.viewDidAppear(animated)
@@ -68,7 +73,7 @@ class SlideUpSettings: UIViewController {
 	}
 
 	fileprivate func setupGestures() {
-		let panGesture = UIPanGestureRecognizer(target: self, action: #selector(handlePan))
+		panGesture = UIPanGestureRecognizer(target: self, action: #selector(handlePan))
 		let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleTap))
 		darkOverlayView.addGestureRecognizer(tapGesture)
 		view.addGestureRecognizer(panGesture)
@@ -113,7 +118,7 @@ class SlideUpSettings: UIViewController {
 		}
 	}
 
-	fileprivate func performAnimation(size: CGFloat) {
+	fileprivate func performAnimation(size: CGFloat, menuHeight: CGFloat = 300) {
 		bottomAnchor.constant = size
 		menuHeightAnchor.constant = menuHeight
 		UIView.animate(withDuration: 0.4,
@@ -125,5 +130,48 @@ class SlideUpSettings: UIViewController {
 				self.dismiss(animated: false, completion: nil)
 			}
 		}
+	}
+
+	fileprivate func addingSubViews() {
+		let settingsController = SettingsSlideUpController()
+		settingsController.delegate = self
+		let navigationController = UINavigationController(rootViewController: settingsController)
+
+		upperStackView = UIStackView(arrangedSubviews: [UIView(), ThumbSlidingView(), UIView()])
+		upperStackView.distribution = .equalCentering
+		upperStackView.isLayoutMarginsRelativeArrangement = true
+		upperStackView.layoutMargins = .init(top: 8, left: 0, bottom: 8, right: 0)
+
+		stackView = UIStackView(arrangedSubviews: [
+				upperStackView,
+				navigationController.view
+			])
+
+		stackView.translatesAutoresizingMaskIntoConstraints = false
+		stackView.axis = .vertical
+		menuView.addSubview(stackView)
+		addChild(navigationController)
+
+		NSLayoutConstraint.activate([
+				stackView.topAnchor.constraint(equalTo: menuView.topAnchor),
+				stackView.trailingAnchor.constraint(equalTo: menuView.trailingAnchor),
+				stackView.bottomAnchor.constraint(equalTo: menuView.bottomAnchor),
+				stackView.leadingAnchor.constraint(equalTo: menuView.leadingAnchor)
+			])
+	}
+}
+
+extension SlideUpSettings: SettingsSlideUpControllerDelegate {
+	func handleDone() {
+		performAnimation(size: 0)
+		panGesture.isEnabled = true
+		stackView.insertArrangedSubview(upperStackView, at: 0)
+	}
+
+	func handleEdit() {
+		stackView.removeArrangedSubview(upperStackView)
+		upperStackView.removeFromSuperview()
+		panGesture.isEnabled = false
+		performAnimation(size: 0, menuHeight: view.frame.height)
 	}
 }

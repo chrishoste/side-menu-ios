@@ -12,7 +12,6 @@ import UIKit
 struct Constants {
 
 	struct SlideMenu {
-		//TODO - Change to 85% of screen size
 		static let menuWidth: CGFloat = 320
 		static let velocityThreshold: CGFloat = 500
 	}
