@@ -4,7 +4,9 @@
 
 ## Screen Caputre
 
-🎥: Coming Soon
+[Youtube-Link](https://www.youtube.com/watch?v=_8LdaXhpxys)
+
+<img width="300" src="https://github.com/chrishoste/side-menu-ios/blob/master/ScreenCapture.gif">
 
 ## Features
 
