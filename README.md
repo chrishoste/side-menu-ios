@@ -2,11 +2,18 @@
 
 > Playing with Swift, without Storyboard files
 
-## Screen Caputre
+## Youtube ([Link](https://youtu.be/_8LdaXhpxys))
+<p align="center">
+  <a href="https://youtu.be/_8LdaXhpxys">
+    <img alt="youtube_thumbnail" src="https://img.youtube.com/vi/_8LdaXhpxys/0.jpg" width="300" />
+  </a>
+</p>
 
-[Youtube-Link](https://www.youtube.com/watch?v=_8LdaXhpxys)
+## Screenshots/Gif's
 
-<img width="300" src="https://github.com/chrishoste/side-menu-ios/blob/master/ScreenCapture.gif">
+<p align="center">
+  <img width="300" src="https://github.com/chrishoste/side-menu-ios/blob/master/ScreenCapture.gif">
+</p>
 
 ## Features
 
