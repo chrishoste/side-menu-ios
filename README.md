@@ -12,7 +12,7 @@
 ## Screenshots/Gif's
 
 <p align="center">
-  <img width="300" src="https://github.com/chrishoste/side-menu-ios/blob/master/ScreenCapture.gif">
+  <img width="300" src="https://github.com/chrishoste/side-menu-ios/blob/master/img/capture.gif">
 </p>
 
 ## Features
